@@ -11,3 +11,5 @@ public class SpringSecurityOauthApplication {
 	}
 
 }
+
+// todo: remove the root/src folder?

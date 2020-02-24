@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>authorization-server</artifactId>
+    <artifactId>resource-server</artifactId>
 
-    <name>authorization-server</name>
+    <name>resource-server</name>
     <packaging>war</packaging>
 
     <parent>
@@ -19,19 +19,18 @@
             <version>2.1.3.RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>5.1.5.RELEASE</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.security.oauth</groupId>
             <artifactId>spring-security-oauth2</artifactId>
             <version>2.3.5.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
-        <finalName>authorization-server</finalName>
+        <finalName>resource-server</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -52,9 +51,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <!-- The main class to start by executing java -jar -->
-        <start-class>com.example.config.AuthorizationServerApplication</start-class>
-    </properties>
 </project>
