@@ -38,6 +38,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>spring-security-oauth</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -45,5 +46,13 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<properties>
+
+	</properties>
+
+	<modules>
+		<module>authorization-server</module>
+	</modules>
 
 </project>
