@@ -13,6 +13,7 @@ import org.springframework.jdbc.datasource.init.DataSourceInitializer;
 import org.springframework.jdbc.datasource.init.DatabasePopulator;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -36,18 +37,29 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.jdbc(createDataSource())
 
-               .withClient("sampleClientId")
-               .authorizedGrantTypes("implicit")
-               .scopes("read")
-               .autoApprove(true)
-               .and()
+        clients.inMemory()
+                .withClient("sampleClientId")
+                .authorizedGrantTypes("implicit")
+                .scopes("read", "write", "foo", "bar")
+                .autoApprove(false).accessTokenValiditySeconds(3600)
 
-               .withClient("clientIdPassword")
-               .secret("secret")
-               .authorizedGrantTypes("password", "authorization_code", "refresh_token")
-               .scopes("read");
+                .and()
+                .withClient("fooClientIdPassword")
+                .secret(createPasswordEncoder().encode("secret"))
+                .authorizedGrantTypes("password", "authorization_code", "refresh_token", "client_credentials")
+                .scopes("foo", "read", "write")
+                .accessTokenValiditySeconds(3600) // 1 hour
+                .refreshTokenValiditySeconds(2592000) // 30 days
+
+                .and()
+                .withClient("barClientIdPassword")
+                .secret(createPasswordEncoder().encode("secret"))
+                .authorizedGrantTypes("password", "authorization_code", "refresh_token")
+                .scopes("bar", "read", "write")
+                .accessTokenValiditySeconds(3600) // 1 hour
+                .refreshTokenValiditySeconds(2592000) // 30 days
+        ;
     }
 
     @Override
@@ -75,14 +87,19 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     }
 
     private DatabasePopulator createDatabasePopulator() {
-
         ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
+
         populator.addScript(_schemaScript);
+        populator.addScript(_dataScript);
+
         return populator;
     }
 
     @Value("classpath:schema.sql")
     private Resource _schemaScript;
+
+    @Value("classpath:data.sql")
+    private Resource _dataScript;
 
     @Bean
     public DataSource createDataSource() {
@@ -99,4 +116,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Autowired
     private Environment _env;
+
+    @Bean
+    public BCryptPasswordEncoder createPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }

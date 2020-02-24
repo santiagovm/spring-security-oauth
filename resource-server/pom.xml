@@ -4,7 +4,7 @@
     <artifactId>resource-server</artifactId>
 
     <name>resource-server</name>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>com.example</groupId>
