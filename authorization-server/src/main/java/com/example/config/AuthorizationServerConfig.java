@@ -42,9 +42,13 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .withClient("sampleClientId")
                 .authorizedGrantTypes("implicit")
                 .scopes("read", "write", "foo", "bar")
-                .autoApprove(false).accessTokenValiditySeconds(3600)
+                .autoApprove(false)
+//                .accessTokenValiditySeconds(3600) // 1 hour
+                .accessTokenValiditySeconds(60) // 1 minute
+                .redirectUris("http://localhost:8086/")
 
                 .and()
+
                 .withClient("fooClientIdPassword")
                 .secret(createPasswordEncoder().encode("secret"))
                 .authorizedGrantTypes("password", "authorization_code", "refresh_token", "client_credentials")
@@ -53,6 +57,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .refreshTokenValiditySeconds(2592000) // 30 days
 
                 .and()
+
                 .withClient("barClientIdPassword")
                 .secret(createPasswordEncoder().encode("secret"))
                 .authorizedGrantTypes("password", "authorization_code", "refresh_token")
