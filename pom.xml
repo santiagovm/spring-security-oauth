@@ -51,7 +51,7 @@
 	<modules>
 		<module>authorization-server</module>
 		<module>resource-server</module>
-		<module>client-password-flow/src</module>
+		<module>client-password-flow</module>
 	</modules>
 
 </project>
