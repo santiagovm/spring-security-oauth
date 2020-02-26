@@ -5,7 +5,7 @@
     <artifactId>client-password-flow</artifactId>
 
     <name>client-password-flow</name>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>com.example</groupId>
@@ -16,6 +16,7 @@
 
     <build>
         <plugins>
+
             <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
@@ -24,7 +25,7 @@
                 <configuration>
                     <nodeVersion>v10.15.3</nodeVersion>
                     <npmVersion>6.4.1</npmVersion>
-                    <workingDirectory>src/main/resources</workingDirectory>
+                    <workingDirectory>main/resources</workingDirectory>
                 </configuration>
 
                 <executions>
@@ -54,6 +55,16 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- this prevents error about module not having a main class -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+
         </plugins>
 
         <resources>
