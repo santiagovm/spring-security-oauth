@@ -1,5 +1,4 @@
 
-
 ## Build
 
 build all projects and run tests
@@ -16,20 +15,30 @@ run authorization server jar file
 java -jar authorization-server/target/authorization-server.jar
 ```
 
-### Login Page
+## Resource Server
 
-- http://localhost:8081/spring-security-oauth-server
-- http://localhost:8081/spring-security-oauth-server/login
+run resource server jar file
 
-credentials:
+```bash
+java -jar resource-server/target/resource-server.jar
+```
 
-- john / 123 [USER]
+## Client App
 
-### Employee Endpoint
+run client app
 
-GET http://localhost:8081/spring-security-oauth-server/employee
+```bash
+cd client-password-flow/src/main/resources
+yarn start
+```
 
-### Tokens Endpoint
+## Run Test
+
+http://localhost:4200
+
+credentials: john / 123 [USER]
+
+## Tokens Endpoint
 
 List tokens
 
@@ -37,14 +46,14 @@ GET http://localhost:8081/spring-security-oauth-server/tokens
 
 Create a token
 
-POST http://localhost:8081/spring-security-oauth-server/oauth/token
+authorization header is base64(fooClientIdPassword, secret)
 
-
-params.add("grant_type", "password");
-params.add("client_id", CLIENT_ID);
-params.add("username", username);
-
-
-                        .params(params)
-                        .with(httpBasic(CLIENT_ID, CLIENT_SECRET))
-                        .accept(CONTENT_TYPE_JSON)
+```bash
+curl --location --request POST 'http://localhost:8081/spring-security-oauth-server/oauth/token' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--header 'Authorization: Basic Zm9vQ2xpZW50SWRQYXNzd29yZDpzZWNyZXQ=' \
+--data-urlencode 'grant_type=password' \
+--data-urlencode 'client_id=fooClientIdPassword' \
+--data-urlencode 'username=admin' \
+--data-urlencode 'password=nimda'
+```

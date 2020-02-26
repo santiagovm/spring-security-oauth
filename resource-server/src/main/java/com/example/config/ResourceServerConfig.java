@@ -29,12 +29,10 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
         RemoteTokenServices tokenServices = new RemoteTokenServices();
 
-        tokenServices.setCheckTokenEndpointUrl("http://localhost:8080/spring-security-oauth-server/oauth/check_token");
+        tokenServices.setCheckTokenEndpointUrl("http://localhost:8081/spring-security-oauth-server/oauth/check_token");
         tokenServices.setClientId("fooClientIdPassword");
         tokenServices.setClientSecret("secret");
 
         return tokenServices;
     }
-
-
 }
