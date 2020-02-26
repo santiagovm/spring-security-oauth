@@ -1,3 +1,23 @@
+# ps-spring-07
+
+This repo contains some sample projects to demonstrate OAuth2 using Spring
+
+There are four components:
+
+- **Authorization Server:** Spring Boot application that issues access tokens. Normally you would not
+implement such an application. Instead, you would use a service like Pivotal SSO, Okta, Auth0, etc.
+
+- **Resource Server:** Simple REST API using Spring Boot and accessible only if valid access token provided. 
+This app checks the access token provided by the caller by issuing a call to Authorization Server and validate the token.
+
+- **Client Password Flow:** Angular application that captures username and password from user 
+and sends request to Authorization Server to obtain access token. The application then uses access token to make
+calls to Resource Server.
+
+- **Client Implicit Flow:** Angular application that redirects user to a login page at the Authorization Server, 
+where user enters credentials. Authorization Server then redirects to client app with issued access token. 
+At that point the client makes calls to the Resource Server. In this flow the client application has not knowledge of
+the user credentials, while the Password flow exposes the client credentials to the client app.
 
 ## Build
 
@@ -23,7 +43,7 @@ run resource server jar file
 java -jar resource-server/target/resource-server.jar
 ```
 
-## Client App
+## Client App (password flow)
 
 run client app
 
@@ -32,11 +52,24 @@ cd client-password-flow/src/main/resources
 yarn start
 ```
 
-## Run Test
+## Client App (implicit flow)
 
-http://localhost:4200
+run client app
 
-credentials: john / 123 [USER]
+```bash
+cd client-implicit-flow/src/main/resources
+yarn start
+```
+
+## Client Endpoints and Credentials
+
+http://localhost:8085 (password flow)
+http://localhost:8086 (implicit flow)
+
+credentials: 
+
+- john / 123
+- tom / 111
 
 ## Tokens Endpoint
 
