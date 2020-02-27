@@ -41,6 +41,11 @@
                         <goals>
                             <goal>npm</goal>
                         </goals>
+
+                        <configuration>
+                            <arguments>install</arguments>
+                            <arguments>run lint</arguments>
+                        </configuration>
                     </execution>
 
                     <execution>
