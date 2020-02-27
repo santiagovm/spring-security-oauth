@@ -23,6 +23,7 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 
 import javax.sql.DataSource;
+import java.util.Objects;
 
 @Configuration
 @PropertySource({ "classpath:persistence.properties"})
@@ -111,7 +112,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
-        dataSource.setDriverClassName(_env.getProperty("jdbc.driverClassName"));
+        dataSource.setDriverClassName(Objects.requireNonNull(_env.getProperty("jdbc.driverClassName")));
         dataSource.setUrl(_env.getProperty("jdbc.url"));
         dataSource.setUsername(_env.getProperty("jdbc.user"));
         dataSource.setPassword(_env.getProperty("jdbc.pass"));

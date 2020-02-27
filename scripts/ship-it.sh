@@ -9,6 +9,10 @@ function go_to_root_directory() {
     cd "$root_directory"
 }
 
+function run_linter() {
+  ./mvnw clean spotbugs:check
+}
+
 function run_tests() {
     ./mvnw clean test
 }
@@ -20,6 +24,7 @@ function push_code() {
 function main() {
     set_bash_fail_on_error
     go_to_root_directory
+    run_linter
     run_tests
     push_code
 }

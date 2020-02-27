@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
     <artifactId>client-password-flow</artifactId>
-
-    <name>client-password-flow</name>
+    <name>${project.artifactId}</name>
     <packaging>jar</packaging>
 
     <parent>
@@ -20,11 +20,11 @@
             <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
-                <version>1.7.5</version>
+                <version>${frontend.maven.plugin.version}</version>
 
                 <configuration>
-                    <nodeVersion>v10.15.3</nodeVersion>
-                    <npmVersion>6.4.1</npmVersion>
+                    <nodeVersion>${node.version}</nodeVersion>
+                    <npmVersion>${npm.version}</npmVersion>
                     <workingDirectory>src/main/resources</workingDirectory>
                 </configuration>
 
