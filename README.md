@@ -90,3 +90,19 @@ curl --location --request POST 'http://localhost:8081/spring-security-oauth-serv
 --data-urlencode 'username=admin' \
 --data-urlencode 'password=nimda'
 ```
+
+### next steps
+
+- pivotal spring patterns (https://github.com/pivotal/spring-patterns)
+- testing (https://www.baeldung.com/oauth-api-testing-with-spring-mvc)
+- convert to jwt (https://www.baeldung.com/spring-security-oauth-jwt)
+- verify claims (https://www.baeldung.com/spring-security-oauth-2-verify-claims)
+- openid connect (https://www.baeldung.com/spring-security-openid-connect)
+- refresh tokens (https://www.baeldung.com/spring-security-oauth2-remember-me)
+- logout (https://www.baeldung.com/logout-spring-security-oauth)
+
+### reference
+
+- https://www.baeldung.com/rest-api-spring-oauth2-angular
+- https://github.com/Baeldung/spring-security-oauth
+- https://www.baeldung.com/spring-security-oauth2-enable-resource-server-vs-enable-oauth2-sso
