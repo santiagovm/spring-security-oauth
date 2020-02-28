@@ -30,3 +30,8 @@ function main() {
 }
 
 main "$@"
+
+# todo: do not ship if un-staged changes
+# todo: do not ship if WIP commits
+# todo: what if master moved?
+# todo: what if I am not in master branch?
