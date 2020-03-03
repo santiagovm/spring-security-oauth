@@ -90,16 +90,37 @@
             </plugin>
 
             <!-- spring cloud starter contract verifier -->
+            <!-- reference:
+                https://cloud.spring.io/spring-cloud-contract/reference/html/maven-project.html#maven-add-plugin
+                https://cloud.spring.io/spring-cloud-contract/reference/html/maven-project.html#maven-configure-plugin
+             -->
             <plugin>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-contract-maven-plugin</artifactId>
                 <version>${spring.cloud.contract.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>convert</goal>
+                            <goal>generateStubs</goal>
+                            <goal>generateTests</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <extensions>true</extensions>
                 <configuration>
                     <baseClassForTests>
                         com.example.test.config.ContractBaseTest
                     </baseClassForTests>
                 </configuration>
+                <dependencies>
+                    <!-- dependency to convert pact json contracts into tests -->
+                    <dependency>
+                        <groupId>org.springframework.cloud</groupId>
+                        <artifactId>spring-cloud-contract-pact</artifactId>
+                        <version>${spring.cloud.contract.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>

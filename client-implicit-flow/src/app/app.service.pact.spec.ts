@@ -62,7 +62,7 @@ describe('AppService', () => {
       name: 'foo-name-333',
     };
 
-    const testUrl = '/spring-security-oauth-resource/foos/333';
+    const testUrl = '/foos/333';
 
     beforeAll(done => {
 

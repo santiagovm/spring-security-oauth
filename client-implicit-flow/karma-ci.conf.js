@@ -49,7 +49,7 @@ module.exports = function (config) {
       spec: 2,
     }],
     proxies: {
-      '/spring-security-oauth-resource/foos/': 'http://127.0.0.1:1234/spring-security-oauth-resource/foos/'
+      '/foos/': 'http://127.0.0.1:1234/foos/'
     },
   });
 };
