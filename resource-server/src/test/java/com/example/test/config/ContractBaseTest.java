@@ -41,3 +41,11 @@ public abstract class ContractBaseTest {
         RestAssuredMockMvc.mockMvc(mockMvc);
     }
 }
+
+// todo: setup full contract testing cycle
+// client app publishes contracts to pact broker and back end pulls contracts from
+// pact broker instead of being hard-coded in the test/resources/contracts folder
+// reference:
+// - https://ordina-jworks.github.io/spring/2018/04/28/Spring-Cloud-Contract-meet-Pact.html
+// - https://reflectoring.io/consumer-driven-contracts-with-pact-feign-spring-data-rest/
+// - https://reflectoring.io/consumer-driven-contract-provider-spring-cloud-contract/
