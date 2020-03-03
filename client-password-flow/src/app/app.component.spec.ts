@@ -1,5 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -7,6 +8,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      imports: [RouterTestingModule],
     }).compileComponents();
   }));
 
@@ -19,13 +21,13 @@ describe('AppComponent', () => {
   it(`should have as title 'client-password-flow'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('client-password-flow');
+    expect(app.title).toEqual('client password flow');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('client-password-flow app is running!');
+    expect(compiled.querySelector('.navbar-brand').textContent).toContain('Spring Security OAuth - Password Flow');
   });
 });

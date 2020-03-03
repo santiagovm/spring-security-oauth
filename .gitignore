@@ -1,6 +1,5 @@
 .idea
 *.iml
-**/target
+**/dist/
 **/node_modules/
-**/resources/dist/
-**/resources/node/
+**/target

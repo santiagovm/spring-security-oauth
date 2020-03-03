@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('client-password-flow app is running!');
+    expect(page.getTitleText()).toEqual('Spring Security OAuth - Password Flow');
   });
 
   afterEach(async () => {

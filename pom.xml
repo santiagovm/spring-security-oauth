@@ -19,8 +19,6 @@
 
 	<modules>
 		<module>authorization-server</module>
-		<module>client-implicit-flow</module>
-		<module>client-password-flow</module>
 		<module>resource-server</module>
 	</modules>
 

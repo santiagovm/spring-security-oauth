@@ -1,11 +1,12 @@
 {
-  "name": "client-implicit-flow",
+  "name": "client-password-flow",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 8086",
+    "start": "ng serve --port 8085",
     "build": "ng build",
     "test": "ng test",
+    "test-ci": "ng test --karma-config=karma-ci.conf.js --no-progress",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -19,7 +20,7 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
-    "angular-oauth2-oidc": "^8.0.4",
+    "ng2-cookies": "^1.0.12",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

@@ -43,6 +43,7 @@ public abstract class ContractBaseTest {
 }
 
 // todo: setup full contract testing cycle
+// don't do this until done with spring-patterns tag v6, there is some contract testing there
 // client app publishes contracts to pact broker and back end pulls contracts from
 // pact broker instead of being hard-coded in the test/resources/contracts folder
 // reference:

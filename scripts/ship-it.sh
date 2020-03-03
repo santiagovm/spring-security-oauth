@@ -9,12 +9,13 @@ function go_to_root_directory() {
     cd "$root_directory"
 }
 
-function run_linter() {
-  ./mvnw clean spotbugs:check
+function lint_and_test_backend() {
+  ./mvnw clean spotbugs:check test
 }
 
-function run_tests() {
-    ./mvnw clean test
+function lint_and_test_frontend() {
+  bash -ec "cd client-implicit-flow && yarn lint && yarn test-ci && yarn e2e"
+  bash -ec "cd client-password-flow && yarn lint && yarn test-ci && yarn e2e"
 }
 
 function push_code() {
@@ -24,8 +25,10 @@ function push_code() {
 function main() {
     set_bash_fail_on_error
     go_to_root_directory
-    run_linter
-    run_tests
+
+    lint_and_test_frontend
+    lint_and_test_backend
+
     push_code
 }
 
