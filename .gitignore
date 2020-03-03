@@ -1,5 +1,7 @@
 .idea
 *.iml
 **/dist/
+**/logs/
 **/node_modules/
+**/pacts/
 **/target

@@ -48,5 +48,6 @@ public abstract class ContractBaseTest {
 // pact broker instead of being hard-coded in the test/resources/contracts folder
 // reference:
 // - https://ordina-jworks.github.io/spring/2018/04/28/Spring-Cloud-Contract-meet-Pact.html
-// - https://reflectoring.io/consumer-driven-contracts-with-pact-feign-spring-data-rest/
+// - https://reflectoring.io/consumer-driven-contracts-with-angular-and-pact/
+// - https://github.com/thombergs/code-examples/tree/master/pact/pact-angular
 // - https://reflectoring.io/consumer-driven-contract-provider-spring-cloud-contract/

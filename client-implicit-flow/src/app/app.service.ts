@@ -46,7 +46,7 @@ export class AppService {
 
   getResource(resourceUrl): Observable<any> {
     const headers = new HttpHeaders({
-      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+      'Content-type': 'application/json;charset=UTF-8',
       Authorization: 'Bearer ' + this._oauthService.getAccessToken(),
     });
 
