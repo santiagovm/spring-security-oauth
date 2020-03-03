@@ -15,7 +15,6 @@ function lint_and_test_backend() {
 
 function lint_and_test_frontend() {
   bash -ec "cd client-implicit-flow && yarn lint && yarn test-ci && yarn e2e"
-  bash -ec "cd client-password-flow && yarn lint && yarn test-ci && yarn e2e"
 }
 
 function push_code() {
